@@ -6,9 +6,27 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+/**
+ * The TextToSpeechHelper class
+ * <p>
+ * This class concentrates all methods to fire TextToSpeech messages
+ * </p>
+ *
+ * @author Levy Albert albert.school2015@gmail.com
+ * @version 2.0
+ * @since 21 /7/2023
+ */
 public class TextToSpeechHelper {
     private TextToSpeech textToSpeech;
 
+    /**
+     * TextToSpeechHelper method
+     * <p> TextToSpeechHelper constructor
+     * set all the parameters to init the TTS operation
+     * </p>
+     *
+     * @param context the context object that triggered the method
+     */
     public TextToSpeechHelper(Context context) {
         textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
@@ -27,16 +45,27 @@ public class TextToSpeechHelper {
         });
     }
 
+    /**
+     * onCreateContextMenu method
+     * <p> Creating the context menu
+     * </p>
+     *
+     * @param text the string to speech
+     */
     public void speak(String text) {
         textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
     }
 
+    /**
+     * destroy method
+     * <p> Destroying all TTS operations
+     * </p>
+     */
     public void destroy() {
         if (textToSpeech != null) {
             if (textToSpeech.isSpeaking()) {
                 textToSpeech.stop();
             }
-//            textToSpeech.stop();
             textToSpeech.shutdown();
         }
     }

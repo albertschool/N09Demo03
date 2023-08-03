@@ -10,9 +10,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * The Audio activity
+ * <p>
+ * This activity demonstrate TTS messaging
+ * </p>
+ *
+ * @author Levy Albert albert.school2015@gmail.com
+ * @version 2.0
+ * @since 21 /7/2023
+ */
 public class AudioActivity extends AppCompatActivity {
     private EditText eTTTS;
-
     private TextToSpeechHelper ttsHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +31,44 @@ public class AudioActivity extends AppCompatActivity {
         initAll();
     }
 
+    /**
+     * initAll method
+     * <p> Init all activity parameters
+     * </p>
+     */
     private void initAll() {
         eTTTS = findViewById(R.id.eTTTS);
         ttsHelper = new TextToSpeechHelper(this);
     }
 
+    /**
+     * speech method
+     * <p> Trigger the TTS message with text in the EditText field
+     * </p>
+     *
+     * @param view the view that triggered the method
+     */
     public void speech(View view) {
         String text = eTTTS.getText().toString();
         ttsHelper.speak(text);
     }
 
+    /**
+     * onBackPressed method
+     * <p> Finish the activity when back button is clicked
+     * </p>
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
 
+    /**
+     * onDestroy method
+     * <p> Kill all TTS operations when the activity closed
+     * </p>
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -46,26 +77,40 @@ public class AudioActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * onCreateOptionsMenu method
+     * <p> Creating the options menu
+     * </p>
+     *
+     * @param menu the Menu object to pass to the inflater
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
+
+    /**
+     * onOptionsItemSelected method
+     * <p> Reacting the options menu
+     * </p>
+     *
+     * @param item the MenuItem object that triggered by the listener
+     * @return super.onOptionsItemSelected(item)
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
         int id = item.getItemId();
         if (id == R.id.mainMenu) {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-            return true;
+            intent = new Intent(this,MainActivity.class);
         }
-        if (id == R.id.notiMenu) {
-            Intent intent = new Intent(this,NotiActivity.class);
-            startActivity(intent);
-            return true;
+        else if (id == R.id.notiMenu) {
+            intent = new Intent(this,NotiActivity.class);
         }
-        return true;
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
-
 }

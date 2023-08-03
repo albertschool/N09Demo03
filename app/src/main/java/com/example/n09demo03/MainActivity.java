@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 /**
  * The main activity
  * <p>
@@ -23,32 +24,46 @@ import android.widget.Toast;
  * @since 21 /7/2023
  */
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * onCreateOptionsMenu method
+     * <p> Creating the options menu
+     * </p>
+     *
+     * @param menu the Menu object to pass to the inflater
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
+
+    /**
+     * onOptionsItemSelected method
+     * <p> Reacting the options menu
+     * </p>
+     *
+     * @param item the MenuItem object that triggered by the listener
+     * @return super.onOptionsItemSelected(item)
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
         int id = item.getItemId();
         if (id == R.id.audioMenu) {
-            Intent intent = new Intent(this,AudioActivity.class);
-            startActivity(intent);
-            return true;
+            intent = new Intent(this,AudioActivity.class);
         }
         if (id == R.id.notiMenu) {
-            Intent intent = new Intent(this,NotiActivity.class);
-            startActivity(intent);
-            return true;
+            intent = new Intent(this,NotiActivity.class);
         }
-        return true;
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
 }

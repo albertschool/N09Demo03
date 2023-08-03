@@ -9,11 +9,29 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+/**
+ * The NotificationHelper class
+ * <p>
+ * This class concentrates two methods to fire demo notification
+ * </p>
+ *
+ * @author Levy Albert albert.school2015@gmail.com
+ * @version 2.0
+ * @since 21 /7/2023
+ */
 public class NotificationHelper {
     private static final String CHANNEL_ID = "Your_Channel_ID";
     private static final String CHANNEL_NAME = "Your_Channel_Name";
     private static final int NOTIFICATION_ID = 1;
 
+    /**
+     * showNotification method
+     * <p> Demonstrate basic notification building & firing
+     * </p>
+     *
+     * @param context the context object that triggered the method
+     * @param text the string to show in the notification
+     */
     public static void showNotification(Context context, String text) {
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -33,6 +51,14 @@ public class NotificationHelper {
         notificationManager.notify(NOTIFICATION_ID, notiBbuilder.build());
     }
 
+    /**
+     * showNotificationBtn method
+     * <p> Demonstrate a notification with one button building & firing
+     * </p>
+     *
+     * @param context the context object that triggered the method
+     * @param text the string to show in the notification
+     */
     public static void showNotificationBtn(Context context, String text) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
