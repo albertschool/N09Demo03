@@ -4,13 +4,13 @@
     <item
         android:id="@+id/mainMenu"
         android:orderInCategory="100"
-        android:title="Main" />
+        android:title="Toasts" />
     <item
         android:id="@+id/notiMenu"
-        android:orderInCategory="300"
+        android:orderInCategory="200"
         android:title="Notifications" />
     <item
         android:id="@+id/audioMenu"
-        android:orderInCategory="400"
-        android:title="Audio" />
+        android:orderInCategory="300"
+        android:title="TextToSpeech" />
 </menu>
