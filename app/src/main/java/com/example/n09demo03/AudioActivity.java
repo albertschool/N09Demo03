@@ -102,15 +102,15 @@ public class AudioActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = null;
         int id = item.getItemId();
         if (id == R.id.mainMenu) {
-            intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
         }
         else if (id == R.id.notiMenu) {
-            intent = new Intent(this,NotiActivity.class);
+            Intent intent = new Intent(this,NotiActivity.class);
+            startActivity(intent);
         }
-        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }

@@ -109,15 +109,15 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = null;
         int id = item.getItemId();
         if (id == R.id.audioMenu) {
-            intent = new Intent(this,AudioActivity.class);
+            Intent intent = new Intent(this,AudioActivity.class);
+            startActivity(intent);
         }
-        if (id == R.id.notiMenu) {
-            intent = new Intent(this,NotiActivity.class);
+        else if (id == R.id.notiMenu) {
+            Intent intent = new Intent(this,NotiActivity.class);
+            startActivity(intent);
         }
-        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }
