@@ -28,18 +28,23 @@ public class TextToSpeechHelper {
      * @param context the context object that triggered the method
      */
     public TextToSpeechHelper(Context context) {
-        textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+        textToSpeech = new TextToSpeech(context,
+                new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS) {
-                    float sR = 0.8f;
-                    textToSpeech.setSpeechRate(sR);
                     int result = textToSpeech.setLanguage(Locale.US);
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Toast.makeText(context, "Language not supported", Toast.LENGTH_SHORT).show();
+                    if (result == TextToSpeech.LANG_MISSING_DATA ||
+                            result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Toast.makeText(context, "Language not supported",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        float sR = 0.8f;
+                        textToSpeech.setSpeechRate(sR);
                     }
                 } else {
-                    Toast.makeText(context, "Couldn't initialize TTS ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Couldn't initialize TTS ",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -53,7 +58,8 @@ public class TextToSpeechHelper {
      * @param text the string to speech
      */
     public void speak(String text) {
-        textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        textToSpeech.speak(text,
+                TextToSpeech.QUEUE_FLUSH, null, null);
     }
 
     /**
